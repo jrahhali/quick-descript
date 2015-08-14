@@ -1,5 +1,5 @@
 var assert = require("assert"),
-    p = require("./../lib/descriptorFactory"),
+    p = require("./../lib/factory"),
     Descriptor = require("./../lib/descriptor").Descriptor,
     AccessorDescriptor = require("./../lib/descriptor").AccessorDescriptor,
     DataDescriptor = require("./../lib/descriptor").DataDescriptor;
@@ -9,35 +9,22 @@ var func = function() {};
 describe("descriptorFactory", function() {
     it("should create an AccessorDescriptor when an object with get property is passed in", function() {
         var test = p({get: func});
-        assert(test.constructor.toString() === AccessorDescriptor.toString());
-        // No idea why this isn't working.
-        // My guess is mocha is loading difference instance of lib/descriptor.js than ib/descriptorFactory.js is
-        //assert(test instanceof AccessorDescriptor);
+        assert(test instanceof AccessorDescriptor);
     });
 
     it("should create an AccessorDescriptor when an object with set property is passed in", function() {
-        debugger;
         var test = p({set: func});
-        assert(test.constructor.toString() === AccessorDescriptor.toString());
-        // No idea why this isn't working.
-        // My guess is mocha is loading difference instance of lib/descriptor.js than ib/descriptorFactory.js is
-        //assert(test instanceof AccessorDescriptor);
+        assert(test instanceof AccessorDescriptor);
     });
 
     it("should create an AccessorDescriptor when an object with get and set property are passed in", function() {
         var test = p({set: func, get: func});
-        assert(test.constructor.toString() === AccessorDescriptor.toString());
-        // No idea why this isn't working.
-        // My guess is mocha is loading difference instance of lib/descriptor.js than ib/descriptorFactory.js is
-        //assert(test instanceof AccessorDescriptor);
+        assert(test instanceof AccessorDescriptor);
     });
 
     it("should create an DataDescriptor when an object any other object is passed in", function() {
         var test = p({});
-        assert(test.constructor.toString() === DataDescriptor.toString());
-        // No idea why this isn't working.
-        // My guess is mocha is loading difference instance of lib/descriptor.js than ib/descriptorFactory.js is
-        //assert(test instanceof AccessorDescriptor);
+        assert(test instanceof DataDescriptor);
     });
 
     describe("()", function() {
@@ -136,7 +123,6 @@ describe("descriptorFactory", function() {
                 })
             };
             p.apply(obj);
-            debugger;
             var desc1 = Object.getOwnPropertyDescriptor(obj, "member1");
             var desc2 = Object.getOwnPropertyDescriptor(obj, "member2");
             var desc3 = Object.getOwnPropertyDescriptor(obj, "member3");
