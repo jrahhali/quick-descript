@@ -1,0 +1,17 @@
+{
+  "name": "quick-descript",
+  "version": "1.0.0",
+  "description": "Replacement for Object.defineProperty.  Shortens the code it takes to define property descriptors.",
+  "main": "./lib/factory.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "defineProperty"
+  ],
+  "author": "Jamal Rahhali <rahhali@live.com>",
+  "license": "MIT"
+}
